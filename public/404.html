@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      const path = window.location.pathname.slice(1);
+      const base = '/frontend_react/';
+      if (path && path !== base) {
+        const redirect = base + '?' + 
+          (path || '') +
+          (window.location.search ? '&' + window.location.search.slice(1) : '') +
+          window.location.hash;
+        window.location.replace(redirect);
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+
