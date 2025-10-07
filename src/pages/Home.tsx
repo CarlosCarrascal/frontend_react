@@ -118,7 +118,7 @@ const Home: React.FC = () => {
               >
                 Ver Todos
               </Link>
-              {isAuthenticated && (
+              {user && user.roles.includes('ADMIN') && (
                 <Link
                   to="/user"
                   className="px-4 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-colors"
