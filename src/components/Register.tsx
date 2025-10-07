@@ -7,7 +7,6 @@ import {
   validatePassword,
   validateConfirmPassword,
 } from '../utils/validation';
-import type { RegisterData } from '../types/auth.types';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
