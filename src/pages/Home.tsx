@@ -6,7 +6,7 @@ import type { Libro } from '../types/libro.types';
 import LibroCard from '../components/LibroCard';
 
 const Home: React.FC = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, hasRole } = useAuth();
   const [libros, setLibros] = useState<Libro[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
               >
                 Ver Todos
               </Link>
-              {user && user.roles.includes('ADMIN') && (
+              {hasRole('ADMIN') && (
                 <Link
                   to="/user"
                   className="px-4 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl transition-colors"
