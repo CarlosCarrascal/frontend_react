@@ -51,6 +51,13 @@ const libroService = {
 
   getImageUrl: (filename: string | null): string => {
     if (!filename) return '';
+    
+    // Si ya es una URL completa (de Cloudinary), devolverla tal cual
+    if (filename.startsWith('http://') || filename.startsWith('https://')) {
+      return filename;
+    }
+    
+    // Si es un nombre de archivo antiguo (legacy), construir la URL del servidor
     return `https://backend-node-khgr.onrender.com/uploads/${filename}`;
   },
 };
