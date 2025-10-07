@@ -2,11 +2,15 @@
 
 Frontend React con TypeScript para el sistema de biblioteca con autenticación JWT.
 
-## 🚀 Configuración
+## 🚀 Producción
+
+**URL en Producción**: _(Actualizar después del despliegue)_
 
 ### Backend en Producción
 - **URL**: https://backend-node-khgr.onrender.com
 - **API Base**: https://backend-node-khgr.onrender.com/api
+
+Ver [DEPLOYMENT.md](./DEPLOYMENT.md) para instrucciones completas de despliegue.
 
 ## 📦 Instalación y Uso
 
