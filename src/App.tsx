@@ -15,7 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/frontend_react">
         <div className="min-h-screen bg-gray-50">
           <Navbar />
           <Routes>
@@ -36,6 +36,16 @@ function App() {
               element={
                 <ProtectedRoute>
                   <LibroDetalle />
+                </ProtectedRoute>
+              }
+            />
+            
+            {/* Ruta de usuario autenticado */}
+            <Route
+              path="/user"
+              element={
+                <ProtectedRoute>
+                  <User />
                 </ProtectedRoute>
               }
             />
