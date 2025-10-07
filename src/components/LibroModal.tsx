@@ -53,7 +53,7 @@ const LibroModal: React.FC<LibroModalProps> = ({ isOpen, onClose, onSubmit, libr
     const file = e.target.files?.[0];
     if (file) {
       setFormData({ ...formData, portada: file });
-      setRemoveCurrentImage(false); // Ya no eliminar la actual, hay una nueva
+      setRemoveCurrentImage(false);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewImage(reader.result as string);
@@ -68,7 +68,6 @@ const LibroModal: React.FC<LibroModalProps> = ({ isOpen, onClose, onSubmit, libr
     setError('');
 
     try {
-      // Incluir removeImage si se marcó para eliminar la imagen actual
       const dataToSubmit = {
         ...formData,
         removeImage: removeCurrentImage,

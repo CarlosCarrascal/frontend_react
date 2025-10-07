@@ -23,7 +23,6 @@ const User: React.FC = () => {
       setLibros(librosRes.data || []);
       setAutores(autoresRes.data || []);
     } catch (error) {
-      console.error('Error al cargar datos:', error);
       setError('Error al cargar los datos');
     } finally {
       setLoading(false);

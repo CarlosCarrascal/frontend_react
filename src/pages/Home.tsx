@@ -18,7 +18,7 @@ const Home: React.FC = () => {
         const response = await libroService.getAll();
         setLibros(response.data || []);
       } catch (error) {
-        console.error('Error al cargar libros:', error);
+        // Error al cargar libros
       } finally {
         setLoading(false);
       }

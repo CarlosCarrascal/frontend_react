@@ -21,7 +21,7 @@ const Biblioteca: React.FC = () => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    const fetchData = async () => {
+      const fetchData = async () => {
       try {
         setLoading(true);
         const [librosRes, autoresRes] = await Promise.all([
@@ -31,7 +31,7 @@ const Biblioteca: React.FC = () => {
         setLibros(librosRes.data || []);
         setAutores(autoresRes.data || []);
       } catch (error) {
-        console.error('Error al cargar datos:', error);
+        // Error al cargar datos
       } finally {
         setLoading(false);
       }
@@ -40,28 +40,23 @@ const Biblioteca: React.FC = () => {
     fetchData();
   }, []);
 
-  // Filtrar y ordenar libros
   const getFilteredAndSortedLibros = () => {
     let filtered = [...libros];
 
-    // Búsqueda por título
     if (searchTerm) {
       filtered = filtered.filter((libro) =>
         libro.titulo.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Filtro por autor
     if (selectedAutor !== 0) {
       filtered = filtered.filter((libro) => libro.id_autor === selectedAutor);
     }
 
-    // Filtro por año
     if (yearFilter) {
       filtered = filtered.filter((libro) => libro.anio.toString() === yearFilter);
     }
 
-    // Ordenar
     switch (sortBy) {
       case 'title':
         filtered.sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -71,7 +66,6 @@ const Biblioteca: React.FC = () => {
         break;
       case 'recent':
       default:
-        // Ya viene ordenado por id_libro DESC del backend
         break;
     }
 
@@ -85,11 +79,9 @@ const Biblioteca: React.FC = () => {
     currentPage * itemsPerPage
   );
 
-  // Obtener años únicos para el filtro
   const uniqueYears = Array.from(new Set(libros.map((l) => l.anio)))
     .sort((a, b) => b - a);
 
-  // Reset página cuando cambian filtros
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedAutor, yearFilter, sortBy]);
@@ -106,7 +98,6 @@ const Biblioteca: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
             Biblioteca Completa
@@ -116,10 +107,8 @@ const Biblioteca: React.FC = () => {
           </p>
         </div>
 
-        {/* Filtros y Búsqueda */}
         <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-            {/* Búsqueda */}
             <div className="lg:col-span-2">
               <label htmlFor="search" className="block text-sm font-medium text-slate-700 mb-2">
                 Buscar libro
@@ -144,7 +133,6 @@ const Biblioteca: React.FC = () => {
               </div>
             </div>
 
-            {/* Filtro por Autor */}
             <div>
               <label htmlFor="autor" className="block text-sm font-medium text-slate-700 mb-2">
                 Autor
@@ -164,7 +152,6 @@ const Biblioteca: React.FC = () => {
               </select>
             </div>
 
-            {/* Filtro por Año */}
             <div>
               <label htmlFor="year" className="block text-sm font-medium text-slate-700 mb-2">
                 Año
@@ -185,7 +172,6 @@ const Biblioteca: React.FC = () => {
             </div>
           </div>
 
-          {/* Ordenar y Limpiar */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-slate-200">
             <div className="flex items-center gap-2">
               <label htmlFor="sort" className="text-sm font-medium text-slate-700">
@@ -217,7 +203,6 @@ const Biblioteca: React.FC = () => {
           </div>
         </div>
 
-        {/* Resultados */}
         <div className="mb-6">
           <p className="text-sm text-slate-600">
             Mostrando {paginatedLibros.length} de {filteredLibros.length} libro(s)
@@ -225,7 +210,6 @@ const Biblioteca: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid de Libros */}
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="w-8 h-8 border-2 border-slate-200 border-t-slate-900 rounded-full animate-spin"></div>
@@ -238,7 +222,6 @@ const Biblioteca: React.FC = () => {
               ))}
             </div>
 
-            {/* Paginación */}
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}

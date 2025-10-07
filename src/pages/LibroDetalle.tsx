@@ -19,7 +19,6 @@ const LibroDetalle: React.FC = () => {
         const response = await libroService.getById(parseInt(id));
         setLibro(response.data || null);
       } catch (err: any) {
-        console.error('Error al cargar el libro:', err);
         setError('No se pudo cargar la información del libro');
       } finally {
         setLoading(false);

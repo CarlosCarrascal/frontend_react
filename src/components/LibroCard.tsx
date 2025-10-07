@@ -28,7 +28,6 @@ const LibroCard: React.FC<LibroCardProps> = ({ libro, onEdit, onDelete, showActi
 
   return (
     <div className="border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow bg-white">
-      {/* Imagen de portada con overlay */}
       <div className="relative h-64 bg-slate-100 overflow-hidden group cursor-pointer" onClick={handleVerDetalles}>
         {libro.portada ? (
           <img
@@ -47,7 +46,6 @@ const LibroCard: React.FC<LibroCardProps> = ({ libro, onEdit, onDelete, showActi
           </div>
         )}
         
-        {/* Overlay con botón al hacer hover */}
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
           <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
             {isAuthenticated ? (
@@ -74,7 +72,6 @@ const LibroCard: React.FC<LibroCardProps> = ({ libro, onEdit, onDelete, showActi
         </div>
       </div>
 
-      {/* Información del libro */}
       <div className="p-6">
         <h3 className="text-xl font-bold text-slate-900 mb-2 line-clamp-2">
           {libro.titulo}
@@ -105,7 +102,6 @@ const LibroCard: React.FC<LibroCardProps> = ({ libro, onEdit, onDelete, showActi
           )}
         </div>
 
-        {/* Acciones de Administración */}
         {showActions && (onEdit || onDelete) && (
           <div className="flex gap-2 pt-3 border-t border-slate-200">
             {onEdit && (

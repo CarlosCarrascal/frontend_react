@@ -31,7 +31,7 @@ const Admin: React.FC = () => {
           autoresRecientes: autores.slice(0, 5),
         });
       } catch (error) {
-        console.error('Error al cargar estadísticas:', error);
+        // Error al cargar estadísticas
       } finally {
         setLoading(false);
       }

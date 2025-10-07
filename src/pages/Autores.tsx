@@ -20,7 +20,6 @@ const Autores: React.FC = () => {
       const response = await autorService.getAll();
       setAutores(response.data || []);
     } catch (error) {
-      console.error('Error al cargar autores:', error);
       setError('Error al cargar los autores');
     } finally {
       setLoading(false);
