@@ -29,13 +29,20 @@ const LibroCard: React.FC<LibroCardProps> = ({ libro, onEdit, onDelete, showActi
   return (
     <div className="border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow bg-white">
       <div className="relative h-64 bg-slate-100 overflow-hidden group cursor-pointer" onClick={handleVerDetalles}>
-        {libro.portada ? (
+        {imageUrl ? (
           <img
             src={imageUrl}
             alt={libro.titulo}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             onError={(e) => {
-              e.currentTarget.src = 'https://via.placeholder.com/400x600/1e293b/ffffff?text=Sin+Portada';
+              e.currentTarget.style.display = 'none';
+              const parent = e.currentTarget.parentElement;
+              if (parent && !parent.querySelector('.placeholder-svg')) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'placeholder-svg w-full h-full flex items-center justify-center bg-slate-900';
+                placeholder.innerHTML = '<svg class="w-20 h-20 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>';
+                parent.appendChild(placeholder);
+              }
             }}
           />
         ) : (

@@ -50,7 +50,7 @@ const libroService = {
   },
 
   getImageUrl: (filename: string | null): string => {
-    if (!filename) return '/placeholder-book.png';
+    if (!filename) return '';
     return `https://backend-node-khgr.onrender.com/uploads/${filename}`;
   },
 };

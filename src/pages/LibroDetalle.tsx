@@ -89,13 +89,16 @@ const LibroDetalle: React.FC = () => {
             {/* Columna izquierda - Imagen (2 columnas) */}
             <div className="lg:col-span-2 bg-slate-50 p-8 lg:p-12 flex items-center justify-center">
               <div className="w-full max-w-sm">
-                {libro.portada ? (
+                {libro.portada && libroService.getImageUrl(libro.portada) ? (
                   <div className="relative">
                     <img
                       src={libroService.getImageUrl(libro.portada)}
                       alt={libro.titulo}
                       className="w-full rounded-2xl shadow-2xl object-contain"
                       style={{ maxHeight: '600px' }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                   </div>
                 ) : (
